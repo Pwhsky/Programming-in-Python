@@ -32,7 +32,7 @@ B = float(B)
 print(round(A/B,3))
 
 print ('resten är ' + str(A%B))
-# In[2]:
+# In[3]:
 ##1.1.3
 
 
@@ -46,9 +46,10 @@ U='Födelseår'
 #These strings contain replacement fields, 
 #which are expressions delimited by curly braces {}.
 
-print(f'{T:<15}{Y:<15}{U:<15}\n{A:<15}{B:<15}{C:<15}')
+print(f'{T:<15}{Y:<15}{U:<15}')
+print(f'{A:<15}{B:<15}{C:<15}')
 
-# In[2]:
+# In[4]:
 #1.2.1
 A = input('Enter a series of numbers ')
 output = []
@@ -63,7 +64,7 @@ print ('Mean value is: ' + str(avg))
 print ('The first element is: ' + str(output[0]))
 print ('The last element is: ' + str(output[-1]) ) 
 
-# In[]:
+# In[5]:
 #1.2.2
 A = input('Feed me gibberish ' )
 num = sum(i.isdigit() for i in A)
@@ -75,7 +76,7 @@ sumchar = num + letters
 print('The sum of characters is: ' + str(sumchar))
 
 
-# In[]:
+# In[6]:
     #1.2.3
     
 A = input('Specify your gibberish: ')
@@ -85,7 +86,7 @@ Count = A.count(B)
 
 print('Found ' + str(Count) + ' count(s) of ' + str(B) + ' in ' + str(A))
 
-# In[]:
+# In[7]:
     
 #1.3.1
 A=input('Feed me a number ')
@@ -99,9 +100,86 @@ if B.imag==0:
 elif B.imag!=0:
     print(str(B) + ' is complex')
     
-# In[]:
+# In[8]:
     
 #1.3.3 Palindrome
+
+Candidate = input('Choose your word: ')
+
+try:
+   isnumber = float(Candidate)
+   print('This is not a word...')
+   
+except:
+    Candidate = list(Candidate)
+    rCandidate = list(reversed(Candidate))
+    
+    
+if Candidate == rCandidate:
+    
+    output = '' # this converts a list back to a string
+    for i in Candidate:
+        output +=i
+    
+    
+    print(str(output) + ' is a palindrome')
+    
+else:
+    
+  print('Your word is not a palindrome.')
+# In[9]: 
+    #uppgift 1.4.1
+    
+A=input('Write a name ')
+B=input('Write the persons age  ')
+i=1 #iteration number
+end=0 #stops the input process by writing end = 1
+
+j=int(B)
+q=A
+G=int(B)
+while end!=1:
+        i=i+1 #Motsvarar fortfarande vilken iteration
+        Y=input('Write another name ')
+        E=input('Write another age ')
+        C=int(E)
+        G=G+C #Adderar alla tidigare samt senaste inputs för att sedan dela på R vilket ger medelvärdet M
+        Mean=G/i
+        if C>j:
+            q=Y
+            j=C
+            print(str(q) + ' is the oldest person so far')
+        else:
+            print(str(q) + ' is the oldest person so far')
+        print('The average age is ' + str(Mean))
+        U=input('Write "0" if you are done, otherwise write "1" ')
+        U=int(U)
+        if U==0:
+            end=1
+            print(str(Mean) +' is the mean age and the oldest person in the list is ' + str(q))
+            
+            
+
+        # In[10]: 
+            #uppgift 1.4.3
+            R=[] #R is the main matrix, a list of lists.
+            for x in range(1,10):  #x goes from 1 to 9
+                B=[]                   #create empty vector B for each x
+                
+                for y in range(1,10): #y goes from 1 to 9
+
+                    B.append(x*y) #fill B with x*y
+                    
+                    
+                R.append(B) #fill R with the values of B after multiplication
+
+            for x in range (0,9):
+                for y in range(0,9):
+                    print(f'{R[y][x]:4}',end='') #prints each element of R sequentially
+
+                print('\n') #starts a new row
+            
+    
 
 
 
