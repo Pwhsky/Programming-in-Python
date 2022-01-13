@@ -161,7 +161,7 @@ while end!=1:
             
 
         # In[10]: 
-            #uppgift 1.4.3
+            #uppgift 1.4.3 
             R=[] #R is the main matrix, a list of lists.
             for x in range(1,10):  #x goes from 1 to 9
                 B=[]                   #create empty vector B for each x
@@ -179,18 +179,42 @@ while end!=1:
 
                 print('\n') #starts a new row
             
+   
     
+   # In[11]: 
+       #Uppgift 1.5.1 
+       
+A = int(input('Choose an integer: ' ))
 
-
-
-
-
-
-
-    
+for i in range(1,A+1):
  
+    if A % i ==0: #0 modulus = divider
+        print(str(i) + ' is a divider of '+ str(A))
+       
+       # In[12]: 
     
- 
+    #uppgift 1.5.2 Geometric series
+    
+    a = int(input('Enter the starting element value: '))
+q = float(input ('Enter a positive floater less than 1: '))
+Z = float(0)
+for i in range(0,100):
+            Z = Z + a*q**i
+            
+print('The series is calculated to Z = ' + str(Z))
+        
+        
+S = float(a/(1-q))
+print('The exact solution is S = ' + str(S))
+
+# In[13]
+#Uppgift 1.6.1 
+
+N = input('Input N: ')
+a = input('Input a: ')
+b = input('Input b: ')
+    
+C= 
     
  
     
