@@ -7,7 +7,6 @@ Created on Mon Jan 10 19:42:31 2022
 # In[1]:
 # 1.1.1,
 import cmath as cm
-import numpy as np
 
 a = int(input('Assign coefficient a '))
 b = int(input('Assign coefficient b '))
@@ -209,17 +208,15 @@ print('The exact solution is S = ' + str(S))
 
 # In[13]
 #Uppgift 1.6.1 
+import numpy as np
+N = int(input('Input N: '))
+a = int(input('Input a: '))
+b = int(input('Input b: '))
+    
+C= np.linspace(a,b,N) #Using Linspace
+print('Using linspace gives: '+str(C))
+ #OR
 
-N = input('Input N: ')
-a = input('Input a: ')
-b = input('Input b: ')
-    
-C= 
-    
- 
-    
- 
-    
  
     
  
