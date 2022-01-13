@@ -102,7 +102,7 @@ elif B.imag!=0:
 # In[]:
     
 #1.3.3 Palindrome
-
+  alecmoegme
 
 
 
