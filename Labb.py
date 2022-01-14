@@ -212,25 +212,117 @@ import numpy as np
 N = int(input('Input N: '))
 a = int(input('Input a: '))
 b = int(input('Input b: '))
-    
+
 C= np.linspace(a,b,N) #Using Linspace
 print('Using linspace gives: '+str(C))
  #OR
+#K = (b-a)/N
+#fakelinspace = [i*K for i in range(a,b+1)]
+#print('Manual linspace gives: ' + str(fakelinspace))
 
+# In[16]
+ #Uppgift 1.6.2
+A = input('Enter a sequence of numbers: ')
+sequence = []
+
+for i in A.split():
+    sequence.append(int(i));
+
+
+istuple = input('Is your input a tuple or a list? T/L ')
+
+if istuple == 'T':
+    sequence = tuple(sequence)
+    print('Your input is a tuple')
+else:
+    print('Your input is a list')
+
+askforsort = input('How do you want the sequence sorted? R/D ')
+
+
+askfortuple = input('Do you want to make it a tuple or a list? T/L ')
+    
+
+
+if askforsort == 'R':
+     
+    sequence = list(sequence)
+    sequence.sort()
+    
+else:
+    sequence = list(sequence)
+    sequence.sort(reverse = True)
  
     
  
     
- 
+if askfortuple == 'T':
+    sequence = tuple(sequence)
+    print('Your tuple is '+ str(sequence))
+else:
+    sequence = list(sequence)
+    print('Your list is ' + str(sequence))
+
+# In[17]:
+    #1.7.2
+    A = input('For matrix 1, enter row 1: ')
+    m1row1 = []
+
+    for i in A.split():
+        m1row1.append(int(i));
+
+
+B = input('For matrix 1, enter row 2:  ')
+m1row2 = []
+
+for i in B.split():
+     m1row2.append(int(i));
+
+M1 = [m1row1,m1row2]
+
+
+A = input('For matrix 2, enter row 1: ')
+m2row1 = []
+
+for i in A.split():
+        m2row1.append(int(i));
+
+
+B = input('For matrix 2, enter row 2:  ')
+m2row2 = []
+
+for i in B.split():
+     m2row2.append(int(i));
+
+
+M2 = [m2row1,m2row1]
+# print('Matrix 1: ')
+# print(f'{m1row1} \n{m1row2}' )
+# print()
+# print('Matrix 2: ')
+# print(f'{m2row1} \n{m2row2}' )
+
+output = []
+
+for i in range(len(M1)):
     
- 
-    
- 
-    
- 
-    
- 
-    
+        for j in range(len(M2[0])): 
+            for k in range(len(M2)):
+                output[i][j] +=  M1[i][k] * M2[k][j]
+
+print(str(output))
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
