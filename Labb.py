@@ -265,57 +265,47 @@ else:
 
 # In[17]:
     #1.7.2
-    A = input('For matrix 1, enter row 1: ')
-    m1row1 = []
-
-    for i in A.split():
-        m1row1.append(int(i));
-
-
-B = input('For matrix 1, enter row 2:  ')
-m1row2 = []
-
-for i in B.split():
-     m1row2.append(int(i));
-
-M1 = [m1row1,m1row2]
-
-
-A = input('For matrix 2, enter row 1: ')
-m2row1 = []
-
-for i in A.split():
-        m2row1.append(int(i));
-
-
-B = input('For matrix 2, enter row 2:  ')
-m2row2 = []
-
-for i in B.split():
-     m2row2.append(int(i));
-
-
-M2 = [m2row1,m2row1]
-# print('Matrix 1: ')
-# print(f'{m1row1} \n{m1row2}' )
-# print()
-# print('Matrix 2: ')
-# print(f'{m2row1} \n{m2row2}' )
-
-output = []
-
-for i in range(len(M1)):
     
-        for j in range(len(M2[0])): 
-            for k in range(len(M2)):
-                output[i][j] +=  M1[i][k] * M2[k][j]
+# In[18]:
+    #1.8.1
+    import random 
 
-print(str(output))
+biglist = []
+for i in range(1,101):
+        n = random.randint(1,100)
+        biglist.append(n)
+        
+        factors=[i for i in biglist if i%7==0 or i%11==0 or i%13==0]
+print(factors)
 
-
-
-
-
+# In[19]:
+    #uppgift 1.9.2
+import numpy as np
+def convert(number):
+    n = complex(number)
+    nreal = float(n.real)
+    nimag = float(n.imag)
+    angle = round(np.arctan(nimag/nreal) * 57.2957795)
+    
+    print('Absolute value is: ' + str(abs(n)))
+    
+    print('Angle is: ' + str(angle) + ' degrees.')
+# In[20]:
+    #uppgift 1.10.
+    def Longlist(a,b,N=100):
+        Longlist=[a+(x*((b-a)/(N-1))) for x in range(0,N)] #i första "iterationen" är a = givna talet, i andra iterationen är a
+        # - första talet a + mellansteget, detta görs N-1 gånger (Det är N-1 mellansteg) tills det uppnåda givna sista värdet nås.
+        return print(Longlist)
+    Longlist(1,10)
+    
+# In[21]:
+    #1.11.2
+    import cmath as cm
+    
+    roots = lambda a, b, c: tuple(((-b + cm.sqrt(b**2 - 4*a*c))/(2*a),(-b - cm.sqrt(b**2 - 4*a*c))/(2*a)))
+    
+    
+    
 
 
 
