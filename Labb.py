@@ -304,11 +304,126 @@ def convert(number):
     
     roots = lambda a, b, c: tuple(((-b + cm.sqrt(b**2 - 4*a*c))/(2*a),(-b - cm.sqrt(b**2 - 4*a*c))/(2*a)))
     
+    # In[22]:
+        #Uppgift 1.12.2
+    import random
+    Pm=0 #Håller koll på användarens poäng
+    Pd=0 #Håller koll på datorns poäng
+    St=1
+    Sa=2
+    På=3
+    for x in range(3):
+        a=int(input('1 = Sten 2 = Sax 3 = Påse : '))
+        b=random.randrange(1,4)
+        if Pm<4 or Pd<4:
+                if a==b:
+                    print('Du och datorn valde samma, kör igen! : ')
+                elif a==St and b==2:
+                    print('Du fick ett poäng, datorn valde sax.')
+                    Pm=Pm+1
+                elif a==St and b==3:
+                    print('Datorn fick ett poäng, datorn valde påse.')
+                    Pd=Pd+1
+                elif a==Sa and b==1:
+                    print('Datorn fick ett poäng, datorn valde sten.')
+                    Pd=Pd+1
+                elif a==Sa and b==3:
+                    print('Du fick ett poäng, datorn valde påse.')
+                    Pm=Pm+1
+                elif a==På and b==1:
+                    print('Du fick ett poäng, datorn valde sten.')
+                    Pm=Pm+1
+                elif a==På and b==2:
+                    print('Datorn fick ett poäng, datorn valde sax')
+                    Pd=Pd+1
+                if Pm==3 or Pd==3:
+                    print(f'Datorn hade {Pd} poäng och du hade {Pm} poäng')
+                    
+print(f'Datorn fick {Pd} poäng och du fick {Pm} poäng')
+                    
+                    
+# In[23]:
+    #uppgift 1.13.1
+f_namn=input('Skriv namnet på textfilen du vill skapa alternativt läsa av')
+
+Option=int(input('1: Skriva ut fil. 2: Lägga till en rad till filen. 3: Skriva över filen. 4: Lämna programmet :'))
+if Option==1:
+    f=open(f_namn,'r')
+    while True:
+        o = f.readline()
+        if not o:
+            break
+        print(o,end='')
+    f.close()
+if Option==2:
+    f=open(f_namn,'a')
+    while True:
+        nyrad=input('Skriv raden du vill lägga till, om du är klar skriv inget och tryck på enter : ')
+        if nyrad=='':
+            break
+        nyrad+='\n'
+        f.write(nyrad)
+    f.close()
+if Option==3:
+    f=open(f_namn,'w')
+    while True:
+        nyrad=input('Skriv raden du vill lägga till, om du är klar skriv inget och tryck på enter ')
+        if nyrad=='':
+            break
+        nyrad += '\n' #för radvist istället för kolumnvist
+        f.write(nyrad)
+    f.close()
+else:
+    print('Du är klar')
     
+
+# In[24]:
+    #Uppgift 1.14.2
+1)Ger (0,0,0,0)
+2)Ger en kolumn med fyra nollor
+3)(Broadcastar)Gör Radvektor till 3x3 matris med tre identiska rader (1,2,3) samt gör kolumnvektorn till 3x3 matris med tre identiska kolumner (1,2,3)
+4)14
+5)14
+
+# In[25]:
     
+    #Uppgift 1.15.1
+    import random
+    import numpy as np
+    m1=[] #Redskap för konstruera rader
+    m2=[]
+    x1=[] #Matris 1 som skall hanteras
+    x2=[] #Matris 2 som skall hanteras
+    x3=[] #Matris 3 som är resultat av aritmetisk operation
+    for y in range(1,3):
+        if y==1:
+            for i in range(0,4):
+                for u in range(0,4):
+                    P=random.randrange(1,100)
+                    m1.append(P)
+                x1.append(m1)
+                m1=[]
+        elif y==2:
+            for i in range(0,4):
+                for u in range(0,4):
+                    P=random.randrange(1,100)
+                    m2.append(P)
+                x2.append(m2)
+                m2=[]
 
 
 
+    x1=np.array(x1)
+    x2=np.array(x2)
+    A=np.block([[x1,x2],[x2,x1]])
+    B1=np.diag(A)
+    B=B1.reshape(4,2)
+    print(A)
+    print(B1)
+    print(B)
+    
+# In[26]:
+    Uppgift 1.16.1
 
 
 
