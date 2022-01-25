@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Jan 10 19:42:31 2022
 
-@author: 
-"""
 # In[1]:
 # 1.1.1,
 import cmath as cm
@@ -99,6 +95,22 @@ if B.imag==0:
 elif B.imag!=0:
     print(str(B) + ' is complex')
     
+    # In[39]: #maybe broken?
+
+
+    A=input('Write a vector or number, ex: [a,b,c,d...]: ')
+    B=input('Do another one: ')
+    condition = A is B
+if condition==True:
+        print(str(A)+ ' and ' +str(B)+ ' are the same ')
+if condition==False:
+        condition2 = A==B
+        if condition2==False:
+            print(str(A) +' is not the same value as '+ str(B) +' and they do not point to the same object.')
+        elif condition2==True:
+            print(str(A) + ' is the same value as ' + str(B) + ' but they do not point to the same object.')
+
+
 # In[8]:
     
 #1.3.3 Palindrome
@@ -266,6 +278,10 @@ else:
 # In[17]:
     #1.7.2
     
+    
+    
+    
+    
 # In[18]:
     #1.8.1
     import random 
@@ -379,11 +395,7 @@ else:
 
 # In[24]:
     #Uppgift 1.14.2
-1)Ger (0,0,0,0)
-2)Ger en kolumn med fyra nollor
-3)(Broadcastar)Gör Radvektor till 3x3 matris med tre identiska rader (1,2,3) samt gör kolumnvektorn till 3x3 matris med tre identiska kolumner (1,2,3)
-4)14
-5)14
+
 
 # In[25]:
     
@@ -392,9 +404,14 @@ else:
     import numpy as np
     m1=[] #Redskap för konstruera rader
     m2=[]
-    x1=[] #Matris 1 som skall hanteras
-    x2=[] #Matris 2 som skall hanteras
-    x3=[] #Matris 3 som är resultat av aritmetisk operation
+    x1=[] #Matris 1 som skall hanterar, 4x4
+    x2=[] #Matris 2 som skall hanteras, 4x4
+    x3=[] #Matris 3 som är resultat av aritmetisk operation, 8x8
+    
+    #Målet är att skapa matris C =  x1 x2 
+    #                               x2 x1
+    
+    
     for y in range(1,3):
         if y==1:
             for i in range(0,4):
@@ -411,8 +428,6 @@ else:
                 x2.append(m2)
                 m2=[]
 
-
-
     x1=np.array(x1)
     x2=np.array(x2)
     A=np.block([[x1,x2],[x2,x1]])
@@ -423,9 +438,91 @@ else:
     print(B)
     
 # In[26]:
-    Uppgift 1.16.1
+  #  Uppgift 1.16.1 (Olympiska ringar)
+import matplotlib.pyplot as plt
+import numpy as np
+
+circle1 = plt.Circle((7, 6), 1, color='r', fill = False)
+circle2 = plt.Circle((4.75, 6), 1, color='black', fill = False)
+circle3 = plt.Circle((2.5,6),1,color='blue',fill=False)
+
+circle4 = plt.Circle((5.88, 5), 1, color='green', fill = False)
+circle5 = plt.Circle((3.65, 5), 1, color='orange', fill = False)
+
+fig, ax = plt.subplots()
 
 
+ax.add_patch(circle1)
+ax.add_patch(circle2)
+ax.add_patch(circle3)
+ax.add_patch(circle4)
+ax.add_patch(circle5)
+
+plt.xlim(0,11)
+plt.ylim(0,11)
+plt.axis('off')
+plt.legend()
+
+# In[26]:
+    #Uppgift 1.16.2: 
+        #Plotta sin(x), Cos(x), sin(x)/x, mellan -6pi till 6pi
+import numpy as np
+import matplotlib.pyplot as plt
+decision = input('Choose a plot type: "figure","figures","subplots"  ')
+
+x = np.arange(-6*np.pi,6*np.pi,0.1)
+y1 = np.sin(x)
+y2 = np.cos(x)
+y3 = np.sin(x)/x
+
+
+
+#this section puts everything in the same figure
+if decision == "figure":
+    plt.figure(1)
+    plt.plot(x,y1)
+    plt.plot(x,y2)
+    plt.plot(x,y3)
+    
+    #This section makes 3 subplots in 1 figure
+
+    
+elif decision == "subplots":
+    plt.figure(2)
+    plt.subplot(311)
+    plt.plot(x, y1)
+    plt.subplot(312)
+    plt.plot(x, y2)
+    plt.subplot(313)
+    plt.plot(x,y3)
+
+
+elif decision == "figures": #This section makes 3 figures for each function
+        plt.figure(1)
+        plt.plot(x,y1)
+        plt.figure (2)
+        plt.plot(x,y2)
+        plt.figure(3)
+        plt.plot(x,y3)
+# In[28]:
+import numpy as np
+A = np.vstack([np.zeros((2,2)),np.zeros((2,2)),np.zeros((2,2))])
+print(str(A))
+
+A = np.hstack([A,np.zeros((6,4))])
+print(str(A))
+
+A = np.concatenate([A,np.zeros((6,4))],axis = 1)
+print (str(A))
+
+A = np.concatenate([A,np.zeros((2,10))],axis=0)
+print (str(A))
+
+A = np.delete(A,[8,9],axis=1)
+print (str(A))
+
+A = np.diag(A).reshape(4,-1)
+print (str(A))
 
 
 
