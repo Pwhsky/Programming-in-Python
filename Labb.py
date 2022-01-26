@@ -349,7 +349,7 @@ for i in range(1,101):
         factors=[i for i in biglist if i%7==0 or i%11==0 or i%13==0]
 print(factors)
 
-# In[] #Sets have no repeating elements
+# In[19] #Sets have no repeating elements
 # delkapitel 1.9
 A = input('Input food separated by comma: ')
 
@@ -358,14 +358,14 @@ C = tuple(set(B))
 
 print(str(C))
 
-# In[]
+# In[20]
 #Delkapitel 1.10
+#OBS OBS EJ FÄRDIGT
 
 
 
 
-
-# In[19]:
+# In[21:
     #uppgift 2.1.2
 import numpy as np
 def convert(number):
@@ -377,7 +377,52 @@ def convert(number):
     print('Absolute value is: ' + str(abs(n)))
     
     print('Angle is: ' + str(angle) + ' degrees.')
-# In[20]:
+    
+    # In[22] #Uppgift 2.2.1
+    A = float(input('Enter your starting value: '))
+    Q = float(input('Enter your desired base: '))
+    N = int(input('Enter your desired element (integers only): '))
+    
+    
+    
+    nth = A*Q**(N-1)
+    
+    print('The ' + str(N) +'th'  ' element is calculated as: ' + str(nth))
+    
+    
+    # In[24]
+#Uppgift 2.2.2
+x1 = float(input('Input your point for sine approximation: '))
+iterations = int(input('Enter number of iterations (accuracy): '))
+truesine = math.sin(x1)
+
+for k in range(0,iterations,1):
+    taylorsine=((-1)**k)*(x1**(1+2*k))/factorial(1+2*k)
+
+    
+
+print('The Taylor approximation for sin(x) is: ' + str(taylorsine))
+error = abs(truesine - taylorsine)
+print('The error is: '+ str(error))
+
+x2 = float(input('Input your point for cosine approximation: '))
+iterations = int(input('Enter number of iterations (accuracy): '))
+truecos = math.cos(x2)
+
+for k in range(0,iterations,1):
+    taylorcosine=((-1)**k)*(x2**(1+2*k))/factorial(1+2*k)
+
+    
+
+print('The Taylor approximation for cos(x) is: ' + str(taylorcosine))
+error = abs(truesine - taylorcosine)
+print('The error is: '+ str(error))
+
+
+
+
+    
+# In[25]:
     #uppgift 2.2.3
     def Longlist(a,b,N=100):
         Longlist=[a+(x*((b-a)/(N-1))) for x in range(0,N)] #i första "iterationen" är a = givna talet, i andra iterationen är a
@@ -385,13 +430,13 @@ def convert(number):
         return print(Longlist)
     Longlist(1,10)
     
-# In[21]:
+# In[26]:
     #2.3.2
     import cmath as cm
     
     roots = lambda a, b, c: tuple(((-b + cm.sqrt(b**2 - 4*a*c))/(2*a),(-b - cm.sqrt(b**2 - 4*a*c))/(2*a)))
     
-    # In[22]:
+    # In[27]:
         #Uppgift 2.4
     import random
     Pm=0 #Håller koll på användarens poäng
@@ -429,9 +474,9 @@ def convert(number):
 print(f'Datorn fick {Pd} poäng och du fick {Pm} poäng')
                     
                     
-# In[23]:
+# In[28]:
     #uppgift 2.5.1
-f_namn=input('Skriv namnet på textfilen du vill skapa alternativt läsa av')
+f_namn=input('Skriv namnet på textfilen du vill skapa alternativt läsa av ')
 
 Option=int(input('1: Skriva ut fil. 2: Lägga till en rad till filen. 3: Skriva över filen. 4: Lämna programmet :'))
 if Option==1:
@@ -464,13 +509,12 @@ else:
     print('Du är klar')
     
 
-# In[24]:
+# In[29]:
     #delkapitel 3.1
-    
-    
+  
 
 
-# In[25]:
+# In[30]:
     
     #Uppgift 3.2.1
     import random
@@ -510,7 +554,7 @@ else:
     print(B1)
     print(B)
     
-# In[26]:
+# In[31]:
   #  Uppgift 3.3.1 (Olympiska ringar)
 import matplotlib.pyplot as plt
 import numpy as np
@@ -536,7 +580,7 @@ plt.ylim(0,11)
 plt.axis('off')
 plt.legend()
 
-# In[26]:
+# In[32]:
     #Uppgift 3.3.2: 
         #Plotta sin(x), Cos(x), sin(x)/x, mellan -6pi till 6pi
 import numpy as np
@@ -578,6 +622,8 @@ elif decision == "figures": #This section makes 3 figures for each function
         plt.figure(3)
         plt.plot(x,y3)
 
+# In[33]
+#Delkapitel 3.4
 
 
 
