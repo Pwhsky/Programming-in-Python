@@ -349,6 +349,17 @@ for i in range(1,101):
         factors=[i for i in biglist if i%7==0 or i%11==0 or i%13==0]
 print(factors)
 
+# In[20]:
+    #1.8.3
+    import numpy as np
+size = int(input('Choose the size of your matrix: '))
+A = np.zeros((size,size))
+    
+crossmatrix = [i for i in A ]
+
+    
+    
+
 # In[19] #Sets have no repeating elements
 # delkapitel 1.9
 A = input('Input food separated by comma: ')
