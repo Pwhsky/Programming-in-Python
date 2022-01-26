@@ -61,7 +61,7 @@ print ('The last element is: ' + str(output[-1]) )
 
 # In[5]:
 #1.2.2
-A = input('Feed me gibberish ' )
+A = input('Feed me numbers or words ' )
 num = sum(i.isdigit() for i in A)
 letters = sum(i.isdigit() for i in A)
 space = sum(i.isdigit() for i in A)
@@ -277,7 +277,62 @@ else:
 
 # In[17]:
     #1.7.2
-    
+    def addmatrix(x1,x2):
+        x3=[] # Matris 3 som är resultat av aritmetisk operation
+        for x in range(0,len(x1)):
+            nyrad=[] #Ny rad som motsvarar resultat av aritmetisk operation mellan rad x
+            for y in range(0,len(x1[0])): # Befinner sig i iteration x (rad x) och lägger ihop alla element x1 med motsvarande element i x2
+                nyrad.append(x1[x][y]+x2[x][y])
+            x3.append(nyrad) # Lägger till denna nya rad x i en matris x3 som returneras och skrivs ut
+        return x3
+    def subtmatrix(x1,x2):
+        x3=[] # Matris 3 som är resultat av aritmetisk operation
+        for x in range(0,len(x1)):
+            nyrad=[]
+            for y in range(0,len(x1[0])):
+                nyrad.append(x1[x][y]-x2[x][y])
+            x3.append(nyrad)
+        return x3
+    def multmatrix(x1,x2):
+        x3=[] # Matris 3 som är resultat av aritmetisk operation
+        for x in range(0,len(x1)):
+            nyrad=[]
+            for y in range(0,len(x1[0])):
+                nyrad.append(x1[x][y]*x2[x][y])
+            x3.append(nyrad)
+        return x3
+    m1=[] #Redskap för konstruera rader
+    x1=[] #Matris 1 som skall hanteras
+    x2=[] #Matris 2 som skall hanteras
+    x3=[] # Matris 3 som är resultat av aritmetisk operation
+    Breaker=[]
+    for y in range(1,3):
+        V=int(input(f'Hur många rader har matrisen nummer {y} du vill ange? : '))
+        Breaker.append(V) # Listan Breaker kontrolleras innan aritmetiska operationer för att se om dimensionerna stämmer.
+        for x in range (1,V+1):
+            m1=input(f'Skriv ner rad {x} : ')
+            m1=m1.split()
+            for x in range(0,len(m1)):
+                m1[x]=int(m1[x])
+            if y==1:
+                x1.append(m1)
+            elif y==2:
+                x2.append(m1)
+    if Breaker[0]!=Breaker[1]:
+        print('Dimensionerna på matriserna går inte ihop')
+    else:
+        x=int(input('Skriv 1 för addition av matris, 2 för subtraktion, 3 för multiplikation : '))
+        if x==1:
+            b=addmatrix(x1,x2)
+            print('\n',b)
+        elif x==2:
+            b=subtmatrix(x1,x2)
+            print('\n',b)
+        elif x==3:
+            b=multmatrix(x1,x2)
+            print('\n',b)
+
+
     
     
     
@@ -294,8 +349,13 @@ for i in range(1,101):
         factors=[i for i in biglist if i%7==0 or i%11==0 or i%13==0]
 print(factors)
 
+# In[]
+# delkapitel 1.9
+
+ 
+
 # In[19]:
-    #uppgift 1.9.2
+    #uppgift 2.1.2
 import numpy as np
 def convert(number):
     n = complex(number)
@@ -307,7 +367,7 @@ def convert(number):
     
     print('Angle is: ' + str(angle) + ' degrees.')
 # In[20]:
-    #uppgift 1.10.
+    #uppgift 2.2.3
     def Longlist(a,b,N=100):
         Longlist=[a+(x*((b-a)/(N-1))) for x in range(0,N)] #i första "iterationen" är a = givna talet, i andra iterationen är a
         # - första talet a + mellansteget, detta görs N-1 gånger (Det är N-1 mellansteg) tills det uppnåda givna sista värdet nås.
@@ -315,13 +375,13 @@ def convert(number):
     Longlist(1,10)
     
 # In[21]:
-    #1.11.2
+    #2.3.2
     import cmath as cm
     
     roots = lambda a, b, c: tuple(((-b + cm.sqrt(b**2 - 4*a*c))/(2*a),(-b - cm.sqrt(b**2 - 4*a*c))/(2*a)))
     
     # In[22]:
-        #Uppgift 1.12.2
+        #Uppgift 2.4
     import random
     Pm=0 #Håller koll på användarens poäng
     Pd=0 #Håller koll på datorns poäng
@@ -359,7 +419,7 @@ print(f'Datorn fick {Pd} poäng och du fick {Pm} poäng')
                     
                     
 # In[23]:
-    #uppgift 1.13.1
+    #uppgift 2.5.1
 f_namn=input('Skriv namnet på textfilen du vill skapa alternativt läsa av')
 
 Option=int(input('1: Skriva ut fil. 2: Lägga till en rad till filen. 3: Skriva över filen. 4: Lämna programmet :'))
@@ -394,12 +454,14 @@ else:
     
 
 # In[24]:
-    #Uppgift 1.14.2
+    #delkapitel 3.1
+    
+    
 
 
 # In[25]:
     
-    #Uppgift 1.15.1
+    #Uppgift 3.2.1
     import random
     import numpy as np
     m1=[] #Redskap för konstruera rader
@@ -438,7 +500,7 @@ else:
     print(B)
     
 # In[26]:
-  #  Uppgift 1.16.1 (Olympiska ringar)
+  #  Uppgift 3.3.1 (Olympiska ringar)
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -464,7 +526,7 @@ plt.axis('off')
 plt.legend()
 
 # In[26]:
-    #Uppgift 1.16.2: 
+    #Uppgift 3.3.2: 
         #Plotta sin(x), Cos(x), sin(x)/x, mellan -6pi till 6pi
 import numpy as np
 import matplotlib.pyplot as plt
@@ -504,26 +566,6 @@ elif decision == "figures": #This section makes 3 figures for each function
         plt.plot(x,y2)
         plt.figure(3)
         plt.plot(x,y3)
-# In[28]:
-import numpy as np
-A = np.vstack([np.zeros((2,2)),np.zeros((2,2)),np.zeros((2,2))])
-print(str(A))
-
-A = np.hstack([A,np.zeros((6,4))])
-print(str(A))
-
-A = np.concatenate([A,np.zeros((6,4))],axis = 1)
-print (str(A))
-
-A = np.concatenate([A,np.zeros((2,10))],axis=0)
-print (str(A))
-
-A = np.delete(A,[8,9],axis=1)
-print (str(A))
-
-A = np.diag(A).reshape(4,-1)
-print (str(A))
-
 
 
 
