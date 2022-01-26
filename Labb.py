@@ -349,10 +349,17 @@ for i in range(1,101):
         factors=[i for i in biglist if i%7==0 or i%11==0 or i%13==0]
 print(factors)
 
-# In[]
+# In[] #Sets have no repeating elements
 # delkapitel 1.9
+A = input('Input items separated by comma: ')
 
- 
+B = A.split(",")
+C = set(B)
+
+print(str(C))
+
+
+
 
 # In[19]:
     #uppgift 2.1.2
