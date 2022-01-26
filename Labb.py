@@ -351,12 +351,16 @@ print(factors)
 
 # In[] #Sets have no repeating elements
 # delkapitel 1.9
-A = input('Input items separated by comma: ')
+A = input('Input food separated by comma: ')
 
 B = A.split(",")
-C = set(B)
+C = tuple(set(B))
 
 print(str(C))
+
+# In[]
+#Delkapitel 1.10
+
 
 
 
