@@ -371,10 +371,15 @@ print(str(C))
 
 # In[20]
 #Delkapitel 1.10
-#OBS OBS EJ FÄRDIGT
+#tar bor duplicates från rader. Kan vara felaktigt löst
+A = input('Enter the elements of the first row, separated with comma: ')
+B = input('Enter the elements of the second row, separated with comma: ')
+
+C = [set(tuple(A.split(","))), set(tuple(B.split(",")))]
 
 
 
+print(str(shoppinglist))
 
 # In[21:
     #uppgift 2.1.2
@@ -634,7 +639,8 @@ elif decision == "figures": #This section makes 3 figures for each function
         plt.plot(x,y3)
 
 # In[33]
-#Delkapitel 3.4
+#Delkapitel 3.4 Numeriska metoder
+
 
 
 
