@@ -427,6 +427,27 @@ def convert(number):
     
     print('Angle is: ' + str(angle) + ' degrees.')
     
+    
+    # In[21]: is prime number?
+        #uppgift 2.1.3
+        
+    import numpy as np
+    def primecheck(number):
+        isprime = True        
+        
+        if number >1:
+            for i in range(2,number):
+                if(number % i) == 0:
+                    isprime = False                                  
+                    break
+            
+            print(isprime)  
+      
+    
+    
+    
+    
+    
     # In[22] #Uppgift 2.2.1
     A = float(input('Enter your starting value: '))
     Q = float(input('Enter your desired base: '))
@@ -479,6 +500,11 @@ print('The error is: '+ str(error))
         return print(Longlist)
     Longlist(1,10)
     
+    
+
+
+
+
 # In[26]:
     #2.3.2
     import cmath as cm
@@ -559,9 +585,14 @@ else:
     
 
 # In[29]:
-    #delkapitel 3.1
+    #delkapitel 3.1.2 utan dator, beskriv the thing
+   # [] makes row vector
+    #[[]] makes columm vector
+  R = [1,2,3]
+  C = [[1,2,3]]
   
 
+B = R-C
 
 # In[30]:
     
@@ -677,25 +708,25 @@ elif decision == "figures": #This section makes 3 figures for each function
 
 
 def f(x):
-    return(x**2 - 1)
+    return(x**2 - 4)
 
 def bisection(a, b, tol): #Intervall, tolerans
     if f(a)*f(b) > 0: #Villkor för a och b
         
         print("No root found.")
     else:
-        while (b - a)/2.0 > tol: #Mittenpunkt större än toleransen?
+        while (b - a)/2.0 > tol: #root is found if (b-a)/2 < tolerance
             midpoint = (a + b)/2.0
-            if f(midpoint) == 0:
-                return(midpoint) #The midpoint is the x-intercept/root.
-            elif f(a)*f(midpoint) < 0: # Increasing but below 0 case
+            if f(midpoint) == 0:                            #If the midpoint happens to be the root
+                return(midpoint)    #Then the midpoint is the root.
+            elif f(a)*f(midpoint) < 0: #  Increasing but below 0 case
                 b = midpoint
             else:
                 a = midpoint
         return(midpoint)
 
-answer = bisection(-1, 5, 0.0001)
-print("Answer:", answer)
+answer = bisection(-5, 0, 0.0001)
+print("The root is somewhere around: ", answer)
 
 
 
