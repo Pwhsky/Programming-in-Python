@@ -10,8 +10,8 @@ c = int(input('Assign coefficient c '))
 
 x1 = (-b + cm.sqrt(b**2 - 4*a*c))/(2*a)
 x2 = (-b - cm.sqrt(b**2 - 4*a*c))/(2*a)
-print (x1)
-print (x2)
+print ('Root 1 is: '+ str(x1))
+print ('Root 2 is: '+ str(x2))
 # In[2]:
 #1.1.2
 
@@ -96,7 +96,7 @@ elif B.imag!=0:
     print(str(B) + ' is complex')
     
     # In[39]: #maybe broken?
-
+ #uppgift 1.3.2
 
     A=input('Write a vector or number, ex: [a,b,c,d...]: ')
     B=input('Do another one: ')
@@ -276,6 +276,39 @@ else:
     print('Your list is ' + str(sequence))
 
 # In[17]:
+    #uppgift 1.6.3, redovisa utan dator #obs obs 0 är första elementet
+    A = [5,4,1,0,10,12,34]
+    B= tuple([5,10,3,20,2])
+    
+    print(str(A[1:3])) #inkluderar inte ändpunktselementet 3, ger element 1 till 3 med en steglängd på 1
+    
+    print(str(B[1:3]))
+    
+    print(str(A[3:1:-1])) #Ger element 3 till 1 med en steglängd på -1, så 0 och 1 sazmt 20 och 3
+    
+    print(str(B[3:1:-1]))
+    
+    print(str(A[-1::-1])) #Börja från sista elementet och gå backlänges, listar allt backlänges
+    
+    print(str(B[-1::-1]))
+    
+    print(str(A[len(A):-1:1])) #listar ett negativt element som en ändpunkt?
+    
+    print(str(B[len(B):-1:1]))
+    
+    print(str(A[1:100])) #Lista alla element 1 till 9, gränsen överskrider sekvensernas längd men det är all good
+    
+    print(str(B[1:10])) 
+    
+    A.append(10) # lägger till 10 i slutet av listan
+    
+    
+    B.append(10) #tuple kan inte appendas, den är immutable
+    
+    
+    
+    
+# In[17]:
     #1.7.2
     def addmatrix(x1,x2):
         x3=[] # Matris 3 som är resultat av aritmetisk operation
@@ -350,8 +383,8 @@ for i in range(1,101):
 print(factors)
 
 # In[20]:
-    #1.8.3
-    import numpy as np
+    #1.8.3 ej färdig
+import numpy as np
 size = int(input('Choose the size of your matrix: '))
 A = np.zeros((size,size))
     
@@ -640,6 +673,58 @@ elif decision == "figures": #This section makes 3 figures for each function
 
 # In[33]
 #Delkapitel 3.4 Numeriska metoder
+#uppgift 3.4.1 bisektiondmetoden 
+
+
+def f(x):
+    return(x**2 - 1)
+
+def bisection(a, b, tol): #Intervall, tolerans
+    if f(a)*f(b) > 0: #Villkor för a och b
+        
+        print("No root found.")
+    else:
+        while (b - a)/2.0 > tol: #Mittenpunkt större än toleransen?
+            midpoint = (a + b)/2.0
+            if f(midpoint) == 0:
+                return(midpoint) #The midpoint is the x-intercept/root.
+            elif f(a)*f(midpoint) < 0: # Increasing but below 0 case
+                b = midpoint
+            else:
+                a = midpoint
+        return(midpoint)
+
+answer = bisection(-1, 5, 0.0001)
+print("Answer:", answer)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
