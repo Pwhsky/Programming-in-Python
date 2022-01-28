@@ -95,7 +95,7 @@ if B.imag==0:
 elif B.imag!=0:
     print(str(B) + ' is complex')
     
-    # In[39]: #maybe broken?
+    # In[8]: #maybe broken?
  #uppgift 1.3.2
 
     A=input('Write a vector or number, ex: [a,b,c,d...]: ')
@@ -111,7 +111,7 @@ if condition==False:
             print(str(A) + ' is the same value as ' + str(B) + ' but they do not point to the same object.')
 
 
-# In[8]:
+# In[9]:
     
 #1.3.3 Palindrome
 
@@ -138,7 +138,7 @@ if Candidate == rCandidate:
 else:
     
   print('Your word is not a palindrome.')
-# In[9]: 
+# In[10]: 
     #uppgift 1.4.1
     
 A=input('Write a name ')
@@ -549,7 +549,7 @@ print('The error is: '+ str(error))
 print(f'Datorn fick {Pd} poäng och du fick {Pm} poäng')
                     
                     
-# In[28]:
+# In[29]: #ej fullt fungerande?
     #uppgift 2.5.1
 f_namn=input('Skriv namnet på textfilen du vill skapa alternativt läsa av ')
 
@@ -583,18 +583,78 @@ if Option==3:
 else:
     print('Du är klar')
     
+    # In[28] 
+    #uppgift 2.5.2 #Skriv på detta sätt: readfile(r"filnamn.txt", "ditt ord")
+    
+    #"Just put r before your normal string it converts normal string to raw string:"
+    
+    
+    #Eftersom den kräver filens directory så är "filnamn.txt" = "C:\Users\Alex Lech\Documents\GitHub\Python\hello.txt" på denna dator
+    
+    
+    def readfile(filename,word):
+        
 
-# In[29]:
-    #delkapitel 3.1.2 utan dator, beskriv the thing
-   # [] makes row vector
-    #[[]] makes columm vector
-  R = [1,2,3]
-  C = [[1,2,3]]
-  
+        
+        info = open(filename,"r")
+        text = info.read()
+        occurences = text.count(word)
+        print('The number of counts for ' + str(word)+' is: '+str(occurences)  )
+        
+        
+        # In[29] uppgift 2.5.3
+        
+        def countfile(filename):
+           
+            
+            num_lines = 0
+            num_words = 0
+            num_chars = 0
+            with open(filename, 'r') as f:
+               for line in f:
+                   words = line.split()
 
-B = R-C
-
+                   num_lines += 1
+                   num_words += len(words)
+                   num_chars += len(line)
+              
+              
+            print('Number of lines: '+str(num_lines))
+            print('Number of words: '+str(num_words))
+            print('Number of characters: '+str(num_chars))
+            
+            
+        # In[30] uppgift 2.6.1
+        #"C:\Users\Alex Lech\Documents\GitHub\Python\matrixfile.txt" på denna dator är filsökvägen
+        import numpy as np
+        
+        def inputmatrix(filename): #This function is meant to write a matrix to a file (works)
+             matrixdata = np.matrix([[1,2,3,4,5,6,7], [7,6,5,2,5,2,1,]])
+             with open(filename,'w') as f:
+                 for line in matrixdata:
+                     np.savetxt(f,line,'%.1i')
+                 
+       
+        def readmatrix(filename): #This function is meant to print the matrices in the file as a table? Possible not acceptable
+            
+            contents = open(filename,'r')
+            
+            text = contents.read()
+            
+            print(str(text))
+        
+        
+    
 # In[30]:
+    #delkapitel 3.1.2 utan dator, beskriv vad som händer
+  
+ 1) ger radvektor med 0,0,0
+ 2)  ger kolummvektor med 0,0,0
+    3) Gör Radvektor till 3x3 matris med tre identiska rader (1,2,3) samt gör kolumnvektorn till 3x3 matris med tre identiska kolumner (1,2,3)
+    4) dot produkt mellan R och C, blir 14
+    5) samma som ovan, blir 14
+
+# In[31]:
     
     #Uppgift 3.2.1
     import random
@@ -634,7 +694,7 @@ B = R-C
     print(B1)
     print(B)
     
-# In[31]:
+# In[32]:
   #  Uppgift 3.3.1 (Olympiska ringar)
 import matplotlib.pyplot as plt
 import numpy as np
@@ -660,7 +720,7 @@ plt.ylim(0,11)
 plt.axis('off')
 plt.legend()
 
-# In[32]:
+# In[33]:
     #Uppgift 3.3.2: 
         #Plotta sin(x), Cos(x), sin(x)/x, mellan -6pi till 6pi
 import numpy as np
@@ -674,7 +734,7 @@ y3 = np.sin(x)/x
 
 
 
-#this section puts everything in the same figure
+#this section makes everything in the same figure
 if decision == "figure":
     plt.figure(1)
     plt.plot(x,y1)
@@ -702,20 +762,20 @@ elif decision == "figures": #This section makes 3 figures for each function
         plt.figure(3)
         plt.plot(x,y3)
 
-# In[33]
+# In[34]
 #Delkapitel 3.4 Numeriska metoder
-#uppgift 3.4.1 bisektiondmetoden 
-
+#uppgift 3.4.1 bisektiondmetoden
+from scipy import optimize
 
 def f(x):
-    return(x**2 - 4)
+    return(x**2 - 4) #your function here
 
 def bisection(a, b, tol): #Intervall, tolerans
     if f(a)*f(b) > 0: #Villkor för a och b
         
         print("No root found.")
     else:
-        while (b - a)/2.0 > tol: #root is found if (b-a)/2 < tolerance
+        while (b - a)/2.0 > tol: #root will be found if (b-a)/2 < tolerance
             midpoint = (a + b)/2.0
             if f(midpoint) == 0:                            #If the midpoint happens to be the root
                 return(midpoint)    #Then the midpoint is the root.
@@ -725,16 +785,14 @@ def bisection(a, b, tol): #Intervall, tolerans
                 a = midpoint
         return(midpoint)
 
-answer = bisection(-5, 0, 0.0001)
+answer = bisection(a, b, 0.0001)
 print("The root is somewhere around: ", answer)
 
+root = optimize.bisect(f, a, b)
+print("Scipy gives the root to be: " + str(root))
 
 
-
-
-
-
-
+# point counter: about 40
 
 
 
