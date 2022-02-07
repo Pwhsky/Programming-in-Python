@@ -45,7 +45,7 @@ print(f'{T:<15}{Y:<15}{U:<15}')
 print(f'{A:<15}{B:<15}{C:<15}')
 
 # In[4]:
-#1.2.1
+#1.2.1  #Revised
 A = input('Enter a series of numbers ')
 output = []
 
@@ -54,32 +54,41 @@ for i in A.split():
 
  
 avg = sum(output)/len(output)
-
+lowest = min(output)
+highest = max(output)
 print ('Mean value is: ' + str(avg))
-print ('The first element is: ' + str(output[0]))
-print ('The last element is: ' + str(output[-1]) ) 
+print ('The highest value is: ' + str(highest))
+print ('The lowest value is: ' + str(lowest) ) 
 
 # In[5]:
-#1.2.2
-A = input('Feed me numbers or words ' )
-num = sum(i.isdigit() for i in A)
-letters = sum(i.isdigit() for i in A)
-space = sum(i.isdigit() for i in A)
+#1.2.2 #Revised
+A = input("feed me gibberish: ")
+d=0
+l=0
+for c in A:
+    if c.isdigit():
+        d=d+1
+    elif c.isalpha():
+        l=l+1
 
-sumchar = num + letters
+print(f'Antal bokstäver {l}')
+print(f'Antal siffror {d}')
 
-print('The sum of characters is: ' + str(sumchar))
 
 
-# In[6]:
+# In[6]: #revised
     #1.2.3
-    
-A = input('Specify your gibberish: ')
-B = input('What are you looking for? ')
 
-Count = A.count(B)
+string=input('Skriv text som du vill leta efter mönster i ')
+pattern=input('Skriv mönstret du är ute efter ')
+y=string.find(pattern)
+b=y
+while y != -1:
+    print(b)
+    string=string[y+1:]
+    y=string.find(pattern)
+    b+=y+1
 
-print('Found ' + str(Count) + ' count(s) of ' + str(B) + ' in ' + str(A))
 
 # In[7]:
     
@@ -95,7 +104,7 @@ if B.imag==0:
 elif B.imag!=0:
     print(str(B) + ' is complex')
     
-    # In[8]: #maybe broken?
+    # In[8]: 
  #uppgift 1.3.2
 
     A=input('Write a vector or number, ex: [a,b,c,d...]: ')
@@ -218,19 +227,22 @@ print('The series is calculated to Z = ' + str(Z))
 S = float(a/(1-q))
 print('The exact solution is S = ' + str(S))
 
-# In[13]
+# In[13] #Revised
 #Uppgift 1.6.1 
-import numpy as np
-N = int(input('Input N: '))
-a = int(input('Input a: '))
-b = int(input('Input b: '))
+a=int(input('Ange ett värde för a, a är det första elementet i listan '))
+b=int(input('Ange ett värde för b, b är det sista elementet i listan '))
+N=int(input('Ange hur många punkter du vill ha i lista '))
+T=(b-a)/(N-1) #Detta ger hur stor mellansteg det skall vara mellan varje element
+Y=[]
+Y.append(a) #Lägger till första elementet i position 0
+for x in range(1,N-1):
 
-C= np.linspace(a,b,N) #Using Linspace
-print('Using linspace gives: '+str(C))
- #OR
-#K = (b-a)/N
-#fakelinspace = [i*K for i in range(a,b+1)]
-#print('Manual linspace gives: ' + str(fakelinspace))
+    Y.append(a+T)
+    a=a+T
+Y.append(b) #Lägger till ett sista element som det givna b
+u=len(Y) #Antal punkter
+print(f'{Y} {u}')
+
 
 # In[16]
  #Uppgift 1.6.2
@@ -249,14 +261,14 @@ if istuple == 'T':
 else:
     print('Your input is a list')
 
-askforsort = input('How do you want the sequence sorted? R/D ')
+askforsort = input('How do you want the sequence sorted? A/D ')
 
 
 askfortuple = input('Do you want to make it a tuple or a list? T/L ')
     
 
 
-if askforsort == 'R':
+if askforsort == 'A':
      
     sequence = list(sequence)
     sequence.sort()
@@ -276,34 +288,23 @@ else:
     print('Your list is ' + str(sequence))
 
 # In[17]:
-    #uppgift 1.6.3, redovisa utan dator #obs obs 0 är första elementet
+    #uppgift 1.6.3, redovisa utan dator 
     A = [5,4,1,0,10,12,34]
     B= tuple([5,10,3,20,2])
     
-    print(str(A[1:3])) #inkluderar inte ändpunktselementet 3, ger element 1 till 3 med en steglängd på 1
+     #1 inkluderar inte ändpunktselementet 3, ger element 1 till 3 med en steglängd på 1
     
-    print(str(B[1:3]))
+     #2 Ger element 3 till 1 med en steglängd på -1, så 0 och 1 sazmt 20 och 3
+      
+     #3 Börja från sista elementet och gå backlänges, listar allt backlänges
+    #4 listar ett negativt element som en ändpunkt?
     
-    print(str(A[3:1:-1])) #Ger element 3 till 1 med en steglängd på -1, så 0 och 1 sazmt 20 och 3
+    #5 Lista alla element 1 till 9, gränsen överskrider sekvensernas längd men det är all good
     
-    print(str(B[3:1:-1]))
-    
-    print(str(A[-1::-1])) #Börja från sista elementet och gå backlänges, listar allt backlänges
-    
-    print(str(B[-1::-1]))
-    
-    print(str(A[len(A):-1:1])) #listar ett negativt element som en ändpunkt?
-    
-    print(str(B[len(B):-1:1]))
-    
-    print(str(A[1:100])) #Lista alla element 1 till 9, gränsen överskrider sekvensernas längd men det är all good
-    
-    print(str(B[1:10])) 
-    
-    A.append(10) # lägger till 10 i slutet av listan
+   # 6 lägger till 10 i slutet av listan
     
     
-    B.append(10) #tuple kan inte appendas, den är immutable
+   #7 tuple kan inte appendas, den är immutable
     
     
     
@@ -790,10 +791,6 @@ print("The root is somewhere around: ", answer)
 
 root = optimize.bisect(f, a, b)
 print("Scipy gives the root to be: " + str(root))
-
-
-# point counter: about 40
-
 
 
 

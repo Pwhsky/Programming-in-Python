@@ -121,7 +121,7 @@ Uppgift 1.2.2
 # In[36]:
 
 
-A = input("Skriv en mening")
+A = input("Skriv en mening: ")
 d=0
 l=0
 for c in A:
