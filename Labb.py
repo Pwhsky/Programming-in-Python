@@ -45,7 +45,10 @@ print(f'{T:<15}{Y:<15}{U:<15}')
 print(f'{A:<15}{B:<15}{C:<15}')
 
 # In[4]:
-#1.2.1  #Revised
+
+
+#1.2.1
+
 A = input('Enter a series of numbers ')
 output = []
 
@@ -54,14 +57,13 @@ for i in A.split():
 
  
 avg = sum(output)/len(output)
-lowest = min(output)
-highest = max(output)
+
 print ('Mean value is: ' + str(avg))
-print ('The highest value is: ' + str(highest))
-print ('The lowest value is: ' + str(lowest) ) 
+print ('The first element is: ' + str(output[0]))
+print ('The last element is: ' + str(output[-1]) ) 
 
 # In[5]:
-#1.2.2 #Revised
+#1.2.2 
 A = input("feed me gibberish: ")
 d=0
 l=0
@@ -71,24 +73,31 @@ for c in A:
     elif c.isalpha():
         l=l+1
 
-print(f'Antal bokstäver {l}')
-print(f'Antal siffror {d}')
+#1.2.2
+A = input('Feed me numbers or words ' )
+num = sum(i.isdigit() for i in A)
+letters = sum(i.isdigit() for i in A)
+space = sum(i.isdigit() for i in A)
+
+
+sumchar = num + letters
+
+print('The sum of characters is: ' + str(sumchar))
 
 
 
-# In[6]: #revised
+# In[6]: #ej färdig, gör om med ordentlig funktion
+
+# In[6]:
+
     #1.2.3
+    
+A = input('Specify your gibberish: ')
+B = input('What are you looking for? ')
 
-string=input('Skriv text som du vill leta efter mönster i ')
-pattern=input('Skriv mönstret du är ute efter ')
-y=string.find(pattern)
-b=y
-while y != -1:
-    print(b)
-    string=string[y+1:]
-    y=string.find(pattern)
-    b+=y+1
+Count = A.count(B)
 
+print('Found ' + str(Count) + ' count(s) of ' + str(B) + ' in ' + str(A))
 
 # In[7]:
     
@@ -104,7 +113,9 @@ if B.imag==0:
 elif B.imag!=0:
     print(str(B) + ' is complex')
     
-    # In[8]: 
+
+    # In[39]: #maybe broken?
+
  #uppgift 1.3.2
 
     A=input('Write a vector or number, ex: [a,b,c,d...]: ')
@@ -120,7 +131,7 @@ if condition==False:
             print(str(A) + ' is the same value as ' + str(B) + ' but they do not point to the same object.')
 
 
-# In[9]:
+# In[8]:
     
 #1.3.3 Palindrome
 
@@ -147,7 +158,7 @@ if Candidate == rCandidate:
 else:
     
   print('Your word is not a palindrome.')
-# In[10]: 
+# In[9]: 
     #uppgift 1.4.1
     
 A=input('Write a name ')
@@ -227,22 +238,19 @@ print('The series is calculated to Z = ' + str(Z))
 S = float(a/(1-q))
 print('The exact solution is S = ' + str(S))
 
-# In[13] #Revised
+# In[13]
 #Uppgift 1.6.1 
-a=int(input('Ange ett värde för a, a är det första elementet i listan '))
-b=int(input('Ange ett värde för b, b är det sista elementet i listan '))
-N=int(input('Ange hur många punkter du vill ha i lista '))
-T=(b-a)/(N-1) #Detta ger hur stor mellansteg det skall vara mellan varje element
-Y=[]
-Y.append(a) #Lägger till första elementet i position 0
-for x in range(1,N-1):
+import numpy as np
+N = int(input('Input N: '))
+a = int(input('Input a: '))
+b = int(input('Input b: '))
 
-    Y.append(a+T)
-    a=a+T
-Y.append(b) #Lägger till ett sista element som det givna b
-u=len(Y) #Antal punkter
-print(f'{Y} {u}')
-
+C= np.linspace(a,b,N) #Using Linspace
+print('Using linspace gives: '+str(C))
+ #OR
+#K = (b-a)/N
+#fakelinspace = [i*K for i in range(a,b+1)]
+#print('Manual linspace gives: ' + str(fakelinspace))
 
 # In[16]
  #Uppgift 1.6.2
@@ -261,14 +269,14 @@ if istuple == 'T':
 else:
     print('Your input is a list')
 
-askforsort = input('How do you want the sequence sorted? A/D ')
+askforsort = input('How do you want the sequence sorted? R/D ')
 
 
 askfortuple = input('Do you want to make it a tuple or a list? T/L ')
     
 
 
-if askforsort == 'A':
+if askforsort == 'R':
      
     sequence = list(sequence)
     sequence.sort()
@@ -287,27 +295,9 @@ else:
     sequence = list(sequence)
     print('Your list is ' + str(sequence))
 
-# In[17]:
+# In[17]: färdig!
     #uppgift 1.6.3, redovisa utan dator 
-    A = [5,4,1,0,10,12,34]
-    B= tuple([5,10,3,20,2])
-    
-     #1 inkluderar inte ändpunktselementet 3, ger element 1 till 3 med en steglängd på 1
-    
-     #2 Ger element 3 till 1 med en steglängd på -1, så 0 och 1 sazmt 20 och 3
-      
-     #3 Börja från sista elementet och gå backlänges, listar allt backlänges
-    #4 listar ett negativt element som en ändpunkt?
-    
-    #5 Lista alla element 1 till 9, gränsen överskrider sekvensernas längd men det är all good
-    
-   # 6 lägger till 10 i slutet av listan
-    
-    
-   #7 tuple kan inte appendas, den är immutable
-    
-    
-    
+
     
 # In[17]:
     #1.7.2
@@ -335,7 +325,7 @@ else:
                 nyrad.append(x1[x][y]*x2[x][y])
             x3.append(nyrad)
         return x3
-    m1=[] #Redskap för konstruera rader
+    m1=[] #Lista som tas som input från användare
     x1=[] #Matris 1 som skall hanteras
     x2=[] #Matris 2 som skall hanteras
     x3=[] # Matris 3 som är resultat av aritmetisk operation
@@ -550,7 +540,7 @@ print('The error is: '+ str(error))
 print(f'Datorn fick {Pd} poäng och du fick {Pm} poäng')
                     
                     
-# In[29]: #ej fullt fungerande?
+# In[28]:
     #uppgift 2.5.1
 f_namn=input('Skriv namnet på textfilen du vill skapa alternativt läsa av ')
 
@@ -584,19 +574,9 @@ if Option==3:
 else:
     print('Du är klar')
     
-    # In[28] 
-    #uppgift 2.5.2 #Skriv på detta sätt: readfile(r"filnamn.txt", "ditt ord")
+# In[]:
     
-    #"Just put r before your normal string it converts normal string to raw string:"
-    
-    
-    #Eftersom den kräver filens directory så är "filnamn.txt" = "C:\Users\Alex Lech\Documents\GitHub\Python\hello.txt" på denna dator
-    
-    
-    def readfile(filename,word):
-        
-
-        
+    #Uppgift 2.5.2
         info = open(filename,"r")
         text = info.read()
         occurences = text.count(word)
@@ -646,16 +626,20 @@ else:
         
         
     
-# In[30]:
-    #delkapitel 3.1.2 utan dator, beskriv vad som händer
-  
- 1) ger radvektor med 0,0,0
- 2)  ger kolummvektor med 0,0,0
-    3) Gör Radvektor till 3x3 matris med tre identiska rader (1,2,3) samt gör kolumnvektorn till 3x3 matris med tre identiska kolumner (1,2,3)
-    4) dot produkt mellan R och C, blir 14
-    5) samma som ovan, blir 14
 
-# In[31]:
+
+
+# In[29]:
+    #delkapitel 3.1.2 utan dator, beskriv the thing
+   # [] makes row vector
+    #[[]] makes columm vector
+  R = [1,2,3]
+  C = [[1,2,3]]
+  
+
+B = R-C
+
+# In[30]:
     
     #Uppgift 3.2.1
     import random
@@ -695,7 +679,7 @@ else:
     print(B1)
     print(B)
     
-# In[32]:
+# In[31]:
   #  Uppgift 3.3.1 (Olympiska ringar)
 import matplotlib.pyplot as plt
 import numpy as np
@@ -721,7 +705,7 @@ plt.ylim(0,11)
 plt.axis('off')
 plt.legend()
 
-# In[33]:
+# In[32]:
     #Uppgift 3.3.2: 
         #Plotta sin(x), Cos(x), sin(x)/x, mellan -6pi till 6pi
 import numpy as np
@@ -735,7 +719,7 @@ y3 = np.sin(x)/x
 
 
 
-#this section makes everything in the same figure
+#this section puts everything in the same figure
 if decision == "figure":
     plt.figure(1)
     plt.plot(x,y1)
@@ -763,13 +747,35 @@ elif decision == "figures": #This section makes 3 figures for each function
         plt.figure(3)
         plt.plot(x,y3)
 
-# In[34]
+# In[33]
 #Delkapitel 3.4 Numeriska metoder
-#uppgift 3.4.1 bisektiondmetoden
-from scipy import optimize
+#uppgift 3.4.1 bisektiondmetoden 
+
 
 def f(x):
-    return(x**2 - 4) #your function here
+    return(x**2 - 4)
+
+def bisection(a, b, tol): #Intervall, tolerans
+    if f(a)*f(b) > 0: #Villkor för a och b
+        
+        print("No root found.")
+    else:
+        while (b - a)/2.0 > tol: #root is found if (b-a)/2 < tolerance
+            midpoint = (a + b)/2.0
+            if f(midpoint) == 0:                            #If the midpoint happens to be the root
+                return(midpoint)    #Then the midpoint is the root.
+            elif f(a)*f(midpoint) < 0: #  Increasing but below 0 case
+                b = midpoint
+            else:
+                a = midpoint
+        return(midpoint)
+
+answer = bisection(-5, 0, 0.0001)
+print("The root is approximately: ", answer)
+
+
+# In[]
+#3.4.2 Bisection metod
 
 def bisection(a, b, tol): #Intervall, tolerans
     if f(a)*f(b) > 0: #Villkor för a och b
@@ -789,23 +795,54 @@ def bisection(a, b, tol): #Intervall, tolerans
 answer = bisection(a, b, 0.0001)
 print("The root is somewhere around: ", answer)
 
-root = optimize.bisect(f, a, b)
+root = optimize.bisect(f, a, b) #use scipy to confirm
 print("Scipy gives the root to be: " + str(root))
 
 
 
 
+# point counter: about 40
+# In[]:
+#Kapitel 4:
+    #4.1.1
+    
+   import math
+   from math import sqrt
+
+class Point(object):
+    def __init__(self,x_init,y_init,z_init):
+        self.x = x_init
+        self.y = y_init
+        self.z = z_init
+
+
+    def __str__(self):
+        return "".join(["Point in cartesian: (", str(self.x), ",", str(self.y), ",", str(self.x), ")"])
+
+
+p1 = Point(0, 0, 0) #Origo 
+p2 = Point(1, 0, 1)
+
+def Sfäriska(p2):
+    r = math.sqrt(p2.x**2+p2.y**2+p2.z**2)
+    phi = math.acos(p2.z/r)
+    theta = math.atan(p2.y/p2.x) 
+    sphericals = tuple((r,phi,theta))
+    return sphericals
+
+
+    
+    
+def distance(a, b):
+        return sqrt((a.x-b.x)**2+(a.y-b.y)**2 + (a.z-b.z)**2 )
 
 
 
+print('Distance from origin is: '+ str(distance(p1,p2)))
 
+print(p2.__str__())
 
-
-
-
-
-
-
+print(Sfäriska(p2))
 
 
 
