@@ -86,18 +86,19 @@ print('The sum of characters is: ' + str(sumchar))
 
 
 
-# In[6]: #ej färdig, gör om med ordentlig funktion
-
-# In[6]:
+# In[6]: #Redovisa
 
     #1.2.3
     
-A = input('Specify your gibberish: ')
-B = input('What are you looking for? ')
-
-Count = A.count(B)
-
-print('Found ' + str(Count) + ' count(s) of ' + str(B) + ' in ' + str(A))
+string=input('Skriv text som du vill leta efter mönster i ')
+pattern=input('Skriv mönstret du är ute efter ')
+y=string.find(pattern)
+b=y
+while y != -1:
+    print(b)
+    string=string[y+1:]
+    y=string.find(pattern)
+    b+=y+1
 
 # In[7]:
     
@@ -114,7 +115,7 @@ elif B.imag!=0:
     print(str(B) + ' is complex')
     
 
-    # In[39]: #maybe broken?
+    # In[39]: #färdig
 
  #uppgift 1.3.2
 
@@ -300,70 +301,67 @@ else:
 
     
 # In[17]:
-    #1.7.2
-    def addmatrix(x1,x2):
-        x3=[] # Matris 3 som är resultat av aritmetisk operation
-        for x in range(0,len(x1)):
-            nyrad=[] #Ny rad som motsvarar resultat av aritmetisk operation mellan rad x
-            for y in range(0,len(x1[0])): # Befinner sig i iteration x (rad x) och lägger ihop alla element x1 med motsvarande element i x2
-                nyrad.append(x1[x][y]+x2[x][y])
-            x3.append(nyrad) # Lägger till denna nya rad x i en matris x3 som returneras och skrivs ut
-        return x3
-    def subtmatrix(x1,x2):
-        x3=[] # Matris 3 som är resultat av aritmetisk operation
-        for x in range(0,len(x1)):
-            nyrad=[]
-            for y in range(0,len(x1[0])):
-                nyrad.append(x1[x][y]-x2[x][y])
-            x3.append(nyrad)
-        return x3
-    def multmatrix(x1,x2):
-        x3=[] # Matris 3 som är resultat av aritmetisk operation
-        for x in range(0,len(x1)):
-            nyrad=[]
-            for y in range(0,len(x1[0])):
-                nyrad.append(x1[x][y]*x2[x][y])
-            x3.append(nyrad)
-        return x3
-    m1=[] #Lista som tas som input från användare
-    x1=[] #Matris 1 som skall hanteras
-    x2=[] #Matris 2 som skall hanteras
-    x3=[] # Matris 3 som är resultat av aritmetisk operation
-    Breaker=[]
-    for y in range(1,3):
-        V=int(input(f'Hur många rader har matrisen nummer {y} du vill ange? : '))
-        Breaker.append(V) # Listan Breaker kontrolleras innan aritmetiska operationer för att se om dimensionerna stämmer.
-        for x in range (1,V+1):
-            m1=input(f'Skriv ner rad {x} : ')
-            m1=m1.split()
-            for x in range(0,len(m1)):
-                m1[x]=int(m1[x])
-            if y==1:
-                x1.append(m1)
-            elif y==2:
-                x2.append(m1)
-    if Breaker[0]!=Breaker[1]:
-        print('Dimensionerna på matriserna går inte ihop')
-    else:
-        x=int(input('Skriv 1 för addition av matris, 2 för subtraktion, 3 för multiplikation : '))
-        if x==1:
-            b=addmatrix(x1,x2)
-            print('\n',b)
-        elif x==2:
-            b=subtmatrix(x1,x2)
-            print('\n',b)
-        elif x==3:
-            b=multmatrix(x1,x2)
-            print('\n',b)
-
-
+    #1.7.1
+def addmatrix(x1,x2):
+       x3=[] # Matris 3 som är resultat av aritmetisk operation
+       for x in range(0,len(x1)):
+           nyrad=[] #Ny rad som motsvarar resultat av aritmetisk operation mellan rad x
+           for y in range(0,len(x1[0])): # Befinner sig i iteration x (rad x) och lägger ihop alla element x1 med motsvarande element i x2
+               nyrad.append(x1[x][y]+x2[x][y])
+           x3.append(nyrad) # Lägger till denna nya rad x i en matris x3 som returneras och skrivs ut
+       return x3
+   
+def subtmatrix(x1,x2):
+       x3=[] # Matris 3 som är resultat av aritmetisk operation
+       for x in range(0,len(x1)):
+           nyrad=[]
+           for y in range(0,len(x1[0])):
+               nyrad.append(x1[x][y]-x2[x][y])
+           x3.append(nyrad)
+       return x3
+   
+def multmatrix(x1,x2):
+       x3=[] # Matris 3 som är resultat av aritmetisk operation
+       for x in range(0,len(x1)):
+           nyrad=[]
+           for y in range(0,len(x1[0])):
+               nyrad.append(x1[x][y]*x2[x][y])
+           x3.append(nyrad)
+       return x3
+m1=[] #Redskap för konstruera rader
+x1=[] #Matris 1 som skall hanteras
+x2=[] #Matris 2 som skall hanteras
+x3=[] # Matris 3 som är resultat av aritmetisk operation
+Breaker=[]
+for y in range(1,3):
+       V=int(input(f'Hur många rader har matrisen nummer {y} du vill ange? : '))
+       Breaker.append(V) # Listan Breaker kontrolleras innan aritmetiska operationer för att se om dimensionerna stämmer.
+       for x in range (1,V+1):
+           m1=input(f'Skriv ner rad {x} : ')
+           m1=m1.split()
+           for x in range(0,len(m1)):
+               m1[x]=int(m1[x])
+           if y==1:
+               x1.append(m1)
+           elif y==2:
+               x2.append(m1)
+if Breaker[0]!=Breaker[1]:
+     print('Dimensionerna på matriserna går inte ihop')
+else:
+       x=int(input('Skriv 1 för addition av matris, 2 för subtraktion, 3 för multiplikation : ')) 
+       if x==1:
+           b=addmatrix(x1,x2)
+           print('\n',b)
+       elif x==2:
+           b=subtmatrix(x1,x2)
+           print('\n',b)
+       elif x==3:
+           b=multmatrix(x1,x2)
+           print('\n',b)
     
-    
-    
-    
-# In[18]:
+# In[18]: färdig
     #1.8.1
-    import random 
+import random 
 
 biglist = []
 for i in range(1,101):
@@ -374,18 +372,24 @@ for i in range(1,101):
 print(factors)
 
 # In[20]:
-    #1.8.3 ej färdig
+    #1.8.3 ej färdig!
 import numpy as np
-size = int(input('Choose the size of your matrix: '))
+size = int(input('Choose the size of your matrix: '))*
 A = np.zeros((size,size))
     
-crossmatrix = [i for i in A ]
+# In[] #Fråga angående list comprehension syntax, detta är ej färdigt
+#size = int(input('Choose the size of your matrix: '))
+size = 5
+zeroes = [  [0 for i in range(0,size)] for j in range(0, size) ]
+ 
+cross = 
+print(zeroes)
 
     
     
 
 # In[19] #Sets have no repeating elements
-# delkapitel 1.9
+# delkapitel 1.9.1 färdig
 A = input('Input food separated by comma: ')
 
 B = A.split(",")
@@ -393,9 +397,14 @@ C = tuple(set(B))
 
 print(str(C))
 
+
+
+
+
 # In[20]
+
 #Delkapitel 1.10
-#tar bor duplicates från rader. Kan vara felaktigt löst
+#tar bor duplicates från rader.
 A = input('Enter the elements of the first row, separated with comma: ')
 B = input('Enter the elements of the second row, separated with comma: ')
 
@@ -405,79 +414,79 @@ C = [set(tuple(A.split(","))), set(tuple(B.split(",")))]
 
 print(str(shoppinglist))
 
-# In[21:
+# In[21: #Revised
     #uppgift 2.1.2
 import numpy as np
 def convert(number):
     n = complex(number)
     nreal = float(n.real)
     nimag = float(n.imag)
-    angle = round(np.arctan(nimag/nreal) * 57.2957795)
+    
+    angle = round(np.arctan2(nreal,nimag) * 57.2957795) 
     
     print('Absolute value is: ' + str(abs(n)))
     
     print('Angle is: ' + str(angle) + ' degrees.')
     
     
-    # In[21]: is prime number?
+    # In[21]: Revised
         #uppgift 2.1.3
         
     import numpy as np
     def primecheck(number):
         isprime = True        
         
-        if number >1:
+        if number >0:
             for i in range(2,number):
                 if(number % i) == 0:
                     isprime = False                                  
                     break
-            
-            print(isprime)  
+        else:
+            isprime = False 
+        
+        return isprime
       
     
     
     
     
     
-    # In[22] #Uppgift 2.2.1
-    A = float(input('Enter your starting value: '))
-    Q = float(input('Enter your desired base: '))
-    N = int(input('Enter your desired element (integers only): '))
+    # In[22] #Uppgift 2.2.1 Revised
+    def geometric(A,Q,N):
+        i = 0
+        while i < N:
+            nth = A*Q**(N-1)
+            i = i+1
     
-    
-    
-    nth = A*Q**(N-1)
-    
-    print('The ' + str(N) +'th'  ' element is calculated as: ' + str(nth))
+        return nth
     
     
     # In[24]
-#Uppgift 2.2.2
-x1 = float(input('Input your point for sine approximation: '))
-iterations = int(input('Enter number of iterations (accuracy): '))
-truesine = math.sin(x1)
+#Uppgift 2.2.2 revised
 
-for k in range(0,iterations,1):
-    taylorsine=((-1)**k)*(x1**(1+2*k))/factorial(1+2*k)
+    import math #Antal iterationer är nogrannheten.
 
+def taylorsin(x1,N):
+        taylorsine = 0
+        k = 0
+        while k < N:
+                taylorsine= taylorsine + ((-1)**k)*(x1**(1+2*k))/math.factorial(1+2*k)
+                k = k+1
+            
+        return taylorsine
+    # In[] upgift 2.2.2 tillsammans med sinus funktionen ovan
+    #revised
+import math
     
+def taylorcos(x2,N):
+        taylorcosine = 0
+        k = 0
+        while k < N:
+                taylorcosine=  taylorcosine + ((-1)**k)*(x2**(2*k))/math.factorial(2*k)
+                k = k+1
+        return taylorcosine
 
-print('The Taylor approximation for sin(x) is: ' + str(taylorsine))
-error = abs(truesine - taylorsine)
-print('The error is: '+ str(error))
 
-x2 = float(input('Input your point for cosine approximation: '))
-iterations = int(input('Enter number of iterations (accuracy): '))
-truecos = math.cos(x2)
-
-for k in range(0,iterations,1):
-    taylorcosine=((-1)**k)*(x2**(1+2*k))/factorial(1+2*k)
-
-    
-
-print('The Taylor approximation for cos(x) is: ' + str(taylorcosine))
-error = abs(truesine - taylorcosine)
-print('The error is: '+ str(error))
 
 
 
@@ -485,11 +494,11 @@ print('The error is: '+ str(error))
     
 # In[25]:
     #uppgift 2.2.3
-    def Longlist(a,b,N=100):
-        Longlist=[a+(x*((b-a)/(N-1))) for x in range(0,N)] #i första "iterationen" är a = givna talet, i andra iterationen är a
+def Longlist(a,b,N=100):
+        Longlist=[a+(x*((b-a)/(N-1))) for x in range(N)] #i första "iterationen" är a = givna talet, i andra iterationen är a
         # - första talet a + mellansteget, detta görs N-1 gånger (Det är N-1 mellansteg) tills det uppnåda givna sista värdet nås.
-        return print(Longlist)
-    Longlist(1,10)
+        return Longlist
+Longlist(1,10)
     
     
 
@@ -498,19 +507,19 @@ print('The error is: '+ str(error))
 
 # In[26]:
     #2.3.2
-    import cmath as cm
+import cmath as cm
     
-    roots = lambda a, b, c: tuple(((-b + cm.sqrt(b**2 - 4*a*c))/(2*a),(-b - cm.sqrt(b**2 - 4*a*c))/(2*a)))
+roots = lambda a, b, c: ((-b + cm.sqrt(b**2 - 4*a*c))/(2*a),(-b - cm.sqrt(b**2 - 4*a*c))/(2*a))
     
     # In[27]:
         #Uppgift 2.4
-    import random
-    Pm=0 #Håller koll på användarens poäng
-    Pd=0 #Håller koll på datorns poäng
-    St=1
-    Sa=2
-    På=3
-    for x in range(3):
+import random
+Pm=0 #Håller koll på användarens poäng
+Pd=0 #Håller koll på datorns poäng
+St=1
+Sa=2
+På=3
+for x in range(3):
         a=int(input('1 = Sten 2 = Sax 3 = Påse : '))
         b=random.randrange(1,4)
         if Pm<4 or Pd<4:
@@ -541,7 +550,7 @@ print(f'Datorn fick {Pd} poäng och du fick {Pm} poäng')
                     
                     
 # In[28]:
-    #uppgift 2.5.1
+    #uppgift 2.5.1 #Nästa redovisning här
 f_namn=input('Skriv namnet på textfilen du vill skapa alternativt läsa av ')
 
 Option=int(input('1: Skriva ut fil. 2: Lägga till en rad till filen. 3: Skriva över filen. 4: Lämna programmet :'))
@@ -616,7 +625,7 @@ else:
                      np.savetxt(f,line,'%.1i')
                  
        
-        def readmatrix(filename): #This function is meant to print the matrices in the file as a table? Possible not acceptable
+        def readmatrix("C:\Users\Alex Lech\Documents\GitHub\Python\matrixfile.txt"): #This function is meant to print the matrices in the file as a table? Possible not acceptable
             
             contents = open(filename,'r')
             
@@ -801,7 +810,7 @@ print("Scipy gives the root to be: " + str(root))
 
 
 
-# point counter: about 40
+# point counter: about 41
 # In[]:
 #Kapitel 4:
     #4.1.1
@@ -843,6 +852,100 @@ print('Distance from origin is: '+ str(distance(p1,p2)))
 print(p2.__str__())
 
 print(Sfäriska(p2))
+
+# In[]: #4.1.3
+    
+class Fil(object):
+    
+    def __init__(self,filename):
+        self.filename = filename
+
+    def __str__(self):
+        info=[]
+        num_words = 0
+        num_lines = 0
+        num_charc = 0
+        num_spaces = 0
+        
+        with open(self.filename,'r') as readFile:
+            for line in readFile:
+                num_lines += 1
+                word = 'Y'
+                for letter in line: 
+                    if (letter != ' ' and word == 'Y'):
+                            num_words += 1  
+                            word = 'N'
+                    elif (letter == ' '):
+                        num_spaces += 1
+                        word = 'Y'
+                    for i in letter:
+                        if(i != " "and i !="\n"):
+                            num_charc += 1
+                
+        
+        
+        info = [id(self), self.filename, num_words,num_lines,num_charc,num_spaces]
+        return print(str(info))
+   
+    def write(self,text):
+           with open(self.filename,'w') as f:
+               f.write(text)
+               
+    def readfile(self):
+        
+        with open(self.filename,'r') as f:
+            lines = f.readlines()
+            
+        return print("The content of the file is" + str(lines))
+    
+fil1 = Fil(r"C:\Users\Alex Lech\Documents\GitHub\Python\hello.txt")
+
+text = input("Write to file: ")
+           
+fil1.write(text) #Works
+fil1.__str__() #Works
+fil1.readfile() #works
+    # In[]:
+    #4.2.3 test
+
+    class Student(object):
+        
+        def __init(self,name,surname,age): #__ at the start makes variables private
+            self.name = name
+            self.surname = surname
+            self.age = age
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
